@@ -1,5 +1,6 @@
 """server file for news comparison app"""
 
+import os
 from flask import Flask, render_template, redirect, request, jsonify
 from jinja2 import StrictUndefined
 
@@ -15,6 +16,9 @@ app.jinja_env.undefined = StrictUndefined
 # auto-reloads changes we made, so we don't have to reload manually everytime
 # we make a little change
 app.jinja_env.auto_reload = True
+
+
+news_api_key = os.environ.get("news_api_key")
 
 
 @app.route("/")
