@@ -3,6 +3,7 @@
 import os
 from flask import Flask, render_template, redirect, request, jsonify
 from jinja2 import StrictUndefined
+import news_api
 
 app = Flask(__name__)
 
@@ -27,6 +28,16 @@ def index():
 
     return render_template("index.html")
 
+
+@app.route("/get-news.json")
+def get_news():
+    """make api call and return data for wordcloud"""
+
+    cnn = news_api.cnn(news_api_key)
+
+    cnn_words = news_api.count_words(cnn)
+
+    return jsonify({"cnn": cnn_words})
 
 
 if __name__ == "__main__":
