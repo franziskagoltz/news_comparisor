@@ -29,8 +29,13 @@ def count_words(str):
 
     word_count = {}
 
+    ignore = {"as", "in", "the", "on", "a", "at", "is", "and", "of", "there",
+              "to"}
+
     for word in str.split():
-        word_count[word] = word_count.get(word, 0)
-        word_count[word] += 1
+
+        if word.lower() not in ignore:
+            word_count[word] = word_count.get(word, 0)
+            word_count[word] += 1
 
     return word_count
