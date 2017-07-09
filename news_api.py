@@ -21,7 +21,27 @@ def cnn(api_key):
         if article["description"]:
             cnn_text += article["description"] + " "
 
-    return cnn_text
+    return count_words(cnn_text)
+
+
+def nyt(api_key):
+    """make api call for new york times, return body of text with top news"""
+
+    nyt = requests.get("https://newsapi.org/v1/articles?source=the-new-york-times"+
+                       "&sortBy=top&apiKey="+api_key)
+
+    nyt_articles = nyt.json()["articles"]
+
+    nyt_text = ""
+
+    for article in nyt_articles:
+
+        if article["title"]:
+            nyt_text += article["title"] + " "
+        if article["description"]:
+            nyt_text += article["description"] + " "
+
+    return count_words(nyt_text)
 
 
 def count_words(str):

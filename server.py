@@ -33,11 +33,11 @@ def index():
 def get_news():
     """make api call and return data for wordcloud"""
 
-    cnn = news_api.cnn(news_api_key)
+    cnn_words = news_api.cnn(news_api_key)
+    nyt_words = news_api.nyt(news_api_key)
 
-    cnn_words = news_api.count_words(cnn)
-
-    return jsonify({"cnn": cnn_words})
+    return jsonify({"cnn": cnn_words,
+                    "nyt": nyt_words})
 
 
 if __name__ == "__main__":
