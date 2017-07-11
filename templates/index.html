@@ -5,6 +5,7 @@
 <div>
     <button type="submit" id="show_cnn">Show CNN</button>
     <button type="submit" id="show_nyt">Show New York Times</button>
+    <button type="submit" id="show_breitbart">Show Breitbart News</button>
 </div>
 
 <script src="/static/jqcloud.js"></script>
@@ -50,11 +51,30 @@
             })
     })
 
+    // get word cloud for breitbart news
+
+    $("#show_breitbart").on("click", function(evt) {
+        evt.preventDefault();
+
+            $.get("/get-news.json", function(response) {
+
+                var words = response.breitbart;
+                var matches = [];
+
+                for (word in words) {
+                    matches.push({"text": word, "weight": words[word]})
+                }
+
+                $("#breitbart").jQCloud(matches);
+            })
+    })
+
 </script>
 
 <div>
   <div id="cnn" style="width: 450px; height: 300px; position: relative;"></div>
   <div id="nyt" style="width: 450px; height: 300px; position: relative;"></div>
+  <div id="breitbart" style="width: 450px; height: 300px; position: relative;"></div>
 </div>
 {% endblock %}
 
