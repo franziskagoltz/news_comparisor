@@ -44,6 +44,26 @@ def nyt(api_key):
     return count_words(nyt_text)
 
 
+def breitbart(api_key):
+    """make api call for breitbart news, return body of text with top news"""
+
+    breitbart = requests.get("https://newsapi.org/v1/articles?source=breitbart-news"+
+                             "&sortBy=top&apiKey="+api_key)
+
+    breitbart_articles = breitbart.json()["articles"]
+
+    breitbart_text = ""
+
+    for article in breitbart_articles:
+
+        if article["title"]:
+            breitbart_text += article["title"] + " "
+        if article["description"]:
+            breitbart_text += article["description"] + " "
+
+    return count_words(breitbart_text)
+
+
 def count_words(str):
     """create dictionary with word and occurrence"""
 

@@ -35,9 +35,11 @@ def get_news():
 
     cnn_words = news_api.cnn(news_api_key)
     nyt_words = news_api.nyt(news_api_key)
+    breitbart_words = news_api.breitbart(news_api_key)
 
     return jsonify({"cnn": cnn_words,
-                    "nyt": nyt_words})
+                    "nyt": nyt_words,
+                    "breitbart": breitbart_words})
 
 
 if __name__ == "__main__":
