@@ -2,11 +2,6 @@
 
 {% block content %}
 
-<div>
-    <button type="submit" id="show_cnn">Show CNN</button>
-    <button type="submit" id="show_nyt">Show New York Times</button>
-    <button type="submit" id="show_breitbart">Show Breitbart News</button>
-</div>
 
 <script src="/static/jqcloud.js"></script>
 
@@ -71,10 +66,23 @@
 
 </script>
 
-<div>
-  <div id="cnn" style="width: 450px; height: 300px; position: relative;"></div>
-  <div id="nyt" style="width: 450px; height: 300px; position: relative;"></div>
-  <div id="breitbart" style="width: 450px; height: 300px; position: relative;"></div>
+
+<div class="container">
+<div class="row">
+  <div class="col-sm-4">
+      <button class="btn btn-default" type="submit" id="show_cnn">Show CNN</button>
+      <div id="cnn" style="width: 350px; height: 300px; position: relative;"></div>
+  </div>
+  <div class="col-sm-4">
+      <button class="btn btn-default" type="submit" id="show_nyt">Show New York Times</button>
+      <div id="nyt" style="width: 350px; height: 300px; position: relative;"></div>
+  </div>
+  <div class="col-sm-4">
+      <button class="btn btn-default" type="submit" id="show_breitbart">Show Breitbart News</button>
+      <div id="breitbart" style="width: 350px; height: 300px; position: relative;"></div>
+  </div>
+
+</div>
 </div>
 {% endblock %}
 
